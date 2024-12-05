@@ -12,13 +12,13 @@ img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = 1 (⚪ Common), 2 (🟢 Medium) , 3 (🟣 Rare), 4 (🟡 Legendary), 5 (🏖️ hot), 6 (❄ cold), 7 (💞 Love), 8 (🎃 scary), 9(🎄 Christmas), 10 (👑 unique), 11 (💫 lighting), 12 (🪽 angelic), 13 (🧬 Cross Verse), 14 (🔮 special edition), 15 (🥵 hevenly) """
+rarity_map = 1 (⚪ COMMON), 2 (🟢 MEDIUM) , 3 (🟣 RARE), 4 (🟡 LEGENDARY), 5 (🏖️ HOT), 6 (❄ COLD))), 7 (💞 LOVE), 8 (🎃 SCARY), 9(🎄 CHRISTMAS), 10 (👑 UNIQUE), 11 (💫 SHINING), 12 (🪽 ANGELIC), 13 (🧬 MIX WORLD), 14 (🔮 DELUXE EDITION), 15 (🥵 MYSTIC), 16 (💀 ROYAL) """
 
 
 
 async def get_next_sequence_number(sequence_name):
     sequence_collection = db.sequences
-    sequence_document = await sequence_collection.find_one_and_update(
+    sequence_document = await seROYAL"e_collection.find_one_and_update(
         {'_id': sequence_name}, 
         {'$inc': {'sequence_value': 1}}, 
         return_document=ReturnDocument.AFTER
@@ -48,7 +48,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Invalid URL.')
             return
 
-        rarity_map = {1: "⚪ Common", 2: "🟢 Medium", 3: "🟣 Rare", 4: "🟡 Legendary", 5: "🏖️ hot", 6: "❄ cold", 7: "💞 Love", 8: "🎃 scary", 9: "🎄 Christmas", 10: "👑 unique", 11: "💫 lighting", 12: "🪽 angelic", 13: "🧬 Cross Verse", 14: "🔮 special edition", 15: "🥵 hevenly"}
+        rarity_map = {1: "⚪ COMMON", 2: "🟢 MEDIUM", 3: "🟣 RARE", 4: "🟡 LEGENDARY", 5: "🏖️ HOT", 6: "❄ COLD", 7: "💞 LOVE", 8: "🎃 SCARY", 9: "🎄 CHRISTMAS", 10: "👑 UNIQUE", 11: "💫 SHINING", 12: "🪽 ANGELIC", 13: "🧬 MIX WORLD", 14: "🔮 DELUXE EDITION", 15: "🥵 MYSTIC", 16: "💀 ROYAL"}
         try:
             rarity = rarity_map[int(args[3])]
         except KeyError:
@@ -131,8 +131,7 @@ async def update(update: Update, context: CallbackContext) -> None:
         # Update field
         if args[1] in ['name', 'anime']:
             new_value = args[2].replace('-', ' ').title()
-        elif args[1] == 'rarity':
-            rarity_map = {1: "⚪ Common", 2: "🟢 Medium", 3: "🟣 Rare", 4: "🟡 Legendary", 5: "🏖️ hot", 6: "❄ cold", 7: "💞 Love", 8: "🎃 scary", 9: "🎄 Christmas", 10: "👑 unique", 11: "💫 lighting", 12: "🪽 angelic", 13: "🧬 Cross Verse", 14: "🔮 special edition", 15: "🥵 hevenly"}
+        elif args[1] == 'rarity':rarity_map = {1: "⚪ COMMON", 2: "🟢 MEDIUM", 3: "🟣 RARE", 4: "🟡 LEGENDARY", 5: "🏖️ HOT", 6: "❄ COLD", 7: "💞 LOVE", 8: "🎃 SCARY", 9: "🎄 CHRISTMAS", 10: "👑 UNIQUE", 11: "💫 SHINING", 12: "🪽 ANGELIC", 13: "🧬 MIX WORLD", 14: "🔮 DELUXE EDITION", 15: "🥵 MYSTIC", 16: "💀 ROYAL"}
             try:
                 new_value = rarity_map[int(args[2])]
             except KeyError:
